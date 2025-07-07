@@ -1,0 +1,13 @@
+[[plugins]]
+repo = 'lambdalisue/vim-fern'
+hook_add = '''
+let g:fern#default_hidden = 1
+nnoremap @e :Fern . -drawer<CR>
+'''
+
+[[plugins]]
+repo = "vim-denops/denops.vim"
+on_event = "VimEnter"
+
+[[plugins]]
+repo = 'vim-denops/denops-shared-server.vim'
