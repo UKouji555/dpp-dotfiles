@@ -31,4 +31,5 @@ fi
 
 ln -s ~/dotfiles/vim/.vimrc ~/.vimrc
 
-ln -s ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
+ln -s ~/dotfiles/nvim/ ~/.config/nvim
+
