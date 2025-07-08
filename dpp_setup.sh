@@ -29,4 +29,6 @@ if [ ! -d denops.vim ]; then
   git clone https://github.com/vim-denops/denops.vim
 fi
 
-ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/vim/.vimrc ~/.vimrc
+
+ln -s ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
