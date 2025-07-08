@@ -32,7 +32,7 @@ export class Config extends BaseConfig {
     });
 
     const [context, options] = await args.contextBuilder.get(args.denops);
-    const dotfilesDir = "~/dotfiles/tomls/";
+    const dotfilesDir = "~/dotfiles/vim/tomls/";
 
     // Load toml plugins
     const tomls: Toml[] = [];
@@ -54,6 +54,7 @@ export class Config extends BaseConfig {
         ) as Toml,
       );
     }
+console.log(tomls);
     // Merge toml results
     const recordPlugins: Record<string, Plugin> = {};
     const ftplugins: Record<string, string> = {};

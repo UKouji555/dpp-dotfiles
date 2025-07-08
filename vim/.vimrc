@@ -6,7 +6,7 @@ const s:ext_toml = '~/.cache/dpp/repos/github.com/Shougo/dpp-ext-toml'
 const s:ext_lazy = '~/.cache/dpp/repos/github.com/Shougo/dpp-ext-lazy'
 const s:ext_installer = '~/.cache/dpp/repos/github.com/Shougo/dpp-ext-installer'
 const s:ext_git = '~/.cache/dpp/repos/github.com/Shougo/dpp-protocol-git'
-const s:dpp_config = '~/dotfiles/dpp.ts'
+const s:dpp_config = '~/dotfiles/vim/dpp.ts'
 
 execute 'set runtimepath^=' .. s:dpp_src
 execute 'set runtimepath^=' .. s:ext_toml
