@@ -1,0 +1,136 @@
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+on_event = 'InsertEnter'
+depends = ['denops.vim']
+hook_source = '''
+  call ddc#custom#patch_global('ui', 'native')
+  call ddc#custom#patch_global('sources', ['lsp', 'around'])
+  call ddc#custom#patch_global('sourceOptions', {
+        \ '_': {
+        \   'matchers': ['matcher_head'],
+        \   'sorters': ['sorter_rank']},
+        \ 'around': {
+        \   'mark': 'around' },
+        \ 'nvim-lsp': {
+        \   'mark': 'lsp',
+        \   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
+        \ })
+  call ddc#enable()
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-lsp'
+on_source = 'ddc.vim'
+hook_add = '''
+lua << EOF
+local ddc = vim.fn
+
+-- LSPのcapabilitiesを作成し、denolsに適用
+local capabilities = require("ddc_source_lsp").make_client_capabilities()
+require("lspconfig").denols.setup({
+  capabilities = capabilities,
+})
+
+-- ddc.vim の設定
+ddc["ddc#custom#patch_global"]("sources", { "lsp" })
+ddc["ddc#custom#patch_global"]("sourceOptions", {
+  lsp = {
+    mark = "lsp",
+    forceCompletionPattern = "\\.\\w*|:\\w*|->\\w*",
+  },
+})
+
+ddc["ddc#custom#patch_global"]("sourceParams", {
+  lsp = {
+    snippetEngine = vim.fn["denops#callback#register"](function(body)
+      return vim.fn["vsnip#anonymous"](body)
+    end),
+    enableResolveItem = true,
+    enableAdditionalTextEdit = true,
+  },
+})
+
+-- ddcを有効化
+ddc["ddc#enable"]()
+
+EOF
+'''
+
+[[plugins]]
+repo = "neovim/nvim-lspconfig"
+hook_source = '''
+lua << EOF
+local lspconfig = require("lspconfig")
+
+lspconfig.ts_ls.setup({
+--  on_attach = function(client, bufnr)
+--    local opts = { noremap = true, silent = true, buffer = bufnr }
+--    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+--    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+--    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+--    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+--    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+--  end
+})
+
+lspconfig.lua_ls.setup {
+  settings = {
+    -- Lua の LSP 設定
+  },
+}
+
+--lspconfig.efm.setup {
+--  init_options = { documentFormatting = true },
+--  filetypes = { "lua" },  -- Lua ファイルに適用
+--  settings = {
+--    rootMarkers = { ".git/" },
+--    languages = {
+--      lua = {
+--        { formatCommand = "stylua -g '*.lua' -g '!*.spec.lua' -- .", formatStdin = true }
+--      }
+--    }
+--  }
+--}
+EOF
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-native'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'folke/neodev.nvim'
+on_source = 'neovim/nvim-lspconfig'
+hook_source = '''
+lua << EOF
+require("neodev").setup({
+  -- add any options here, or leave empty to use the default settings
+})
+
+-- then setup your lsp server as usual
+local lspconfig = require("lspconfig")
+
+-- example to setup lua_ls and enable call snippets
+lspconfig.lua_ls.setup({
+settings = {
+Lua = {
+  completion = {
+    callSnippet = "Replace",
+      },
+    },
+  },
+})
+EOF
+'''
