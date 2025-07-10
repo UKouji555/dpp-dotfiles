@@ -31,28 +31,6 @@ export class Config extends BaseConfig {
       stateLines: string[];
     };
 
-    //    const [context, options] = await args.contextBuilder.get(args.denops);
-    //    const dotfilesDir = "~/.config/nvim/";
-    //
-    //    const tomls: Toml[] = [];
-    //    tomls.push(
-    //      (await args.dpp.extAction(args.denops, context, options, "toml", "load", {
-    //        path: await fn.expand(args.denops, dotfilesDir + "dein.toml"),
-    //        options: {
-    //          lazy: false,
-    //        },
-    //      })) as Toml,
-    //    );
-    //
-    //    tomls.push(
-    //      (await args.dpp.extAction(args.denops, context, options, "toml", "load", {
-    //        path: await fn.expand(args.denops, dotfilesDir + "dein_lazy.toml"),
-    //        options: {
-    //          lazy: true,
-    //        },
-    //      })) as Toml,
-    //    );
-
     const [context, options] = await args.contextBuilder.get(args.denops);
     const dotfilesDir = "~/dotfiles/nvim/tomls/";
 
@@ -60,7 +38,6 @@ export class Config extends BaseConfig {
     const tomls: Toml[] = [];
     const tomlFile: string[] = ["tool.toml", "dpp.toml", "ddc.toml"];
     for (const file of tomlFile) {
-console.log(file);
       tomls.push(
         (await args.dpp.extAction(
           args.denops,

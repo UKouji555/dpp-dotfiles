@@ -1,11 +1,9 @@
 [[plugins]]
 repo = "nvim-tree/nvim-web-devicons"
-lazy = 0
 
 [[plugins]]
 repo = "nvim-tree/nvim-tree.lua"
 depends = ["nvim-tree/nvim-web-devicons"]
-lazy = 0
 hook_add = '''
 lua << EOF
 require("nvim-tree").setup {}

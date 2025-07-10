@@ -1,10 +1,8 @@
 [[plugins]] # dpp.vim
 repo = 'Shougo/dpp.vim'
-on_path = "~/.cache/dpp/repos/github.com/Shougo/dpp.vim"
 
 [[plugins]] # denops.vim
 repo = 'vim-denops/denops.vim'
-on_event = "VimEnter"
 
 [[plugins]] # denops-shared-server.vim
 repo = 'vim-denops/denops-shared-server.vim'

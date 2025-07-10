@@ -54,7 +54,7 @@ export class Config extends BaseConfig {
         ) as Toml,
       );
     }
-console.log(tomls);
+
     // Merge toml results
     const recordPlugins: Record<string, Plugin> = {};
     const ftplugins: Record<string, string> = {};
