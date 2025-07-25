@@ -36,7 +36,7 @@ export class Config extends BaseConfig {
 
     // Load toml plugins
     const tomls: Toml[] = [];
-    const tomlFile: string[] = ['tool.toml', 'dpp.toml'];
+    const tomlFile: string[] = ['tool.toml', 'dpp.toml', 'ddc.toml'];
     for (const file of tomlFile) {
       tomls.push(
         await args.dpp.extAction(
