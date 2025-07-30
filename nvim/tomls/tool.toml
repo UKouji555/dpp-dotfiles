@@ -1,0 +1,25 @@
+[[plugins]]
+repo = "nvim-tree/nvim-web-devicons"
+
+[[plugins]]
+repo = "nvim-tree/nvim-tree.lua"
+
+[[plugins]]
+repo = "nvim-lualine/lualine.nvim"
+
+[[plugins]]
+repo = "hiphish/rainbow-delimiters.nvim"
+
+[[plugins]]
+repo = "nvim-lua/plenary.nvim"
+
+[[plugins]]
+repo = "nvim-telescope/telescope.nvim"
+
+[[plugins]]
+repo = 'github.com/tyru/capture.vim'
+on_cmd = ['Capture']
+
+[[plugins]] # vimdoc-ja
+repo = 'github.com/vim-jp/vimdoc-ja'
+hook_add = 'set helplang=ja,en'

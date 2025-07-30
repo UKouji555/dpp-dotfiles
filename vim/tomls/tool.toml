@@ -1,0 +1,9 @@
+[[plugins]]
+repo = 'preservim/nerdtree'
+hook_add = '''
+source $HOME/dotfiles/vim/plugins/nerdtree.rc.vim
+'''
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
